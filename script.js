@@ -11,7 +11,7 @@ const wordList = [
     'parameter', 'quantum', 'recursion', 'syntax', 'thread',
     'unicode', 'virtual', 'wireless', 'pixel', 'element',
     'responsive', 'array', 'object', 'string', 'loop',
-    'class', 'method', 'server', 'client', 'framework'
+    'class', 'method', 'server', 'client', 'framework','yappnika'
 ];
 
 // Game variables
