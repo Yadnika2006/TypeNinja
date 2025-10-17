@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 100;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 1.2em;
+    background: rgba(0,0,0,0.3);
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.stats div {
+    font-weight: bold;
+}
+
+/* Game Area */
+.game-area {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    overflow: hidden;
+}
+
+.word {
+    position: absolute;
+    font-size: 1.8em;
+    font-weight: bold;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    cursor: default;
+    user-select: none;
+    transition: all 0.3s ease;
+    animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.word.matched {
+    background: rgba(46, 213, 115, 0.5);
+    border: 2px solid rgba(46, 213, 115, 0.8);
+    transform: scale(1.05);
+}
+
+.word.removing {
+    animation: popOut 0.3s ease;
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Input Area */
+.input-area {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 600px;
+}
+
+#wordInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5em;
+    font-family: 'Courier New', monospace;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#wordInput:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+#wordInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Menu Styles */
+.menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px 60px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    z-index: 200;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.menu h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.author {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.rules {
+    text-align: left;
+    margin: 20px 0;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.rules p {
+    margin: 5px 0;
+}
+
+.menu button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 1.3em;
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.menu button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+}
+
+.menu button:active {
+    transform: scale(0.98);
+}
+
+/* Game Over Styles */
+.game-over {
+    font-size: 1.2em;
+}
+
+.game-over h2 {
+    margin-bottom: 10px;
+}
+
+.game-over p {
+    margin: 8px 0;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .stats {
+        font-size: 1em;
+        gap: 15px;
+        padding: 8px 15px;
+    }
+
+    .word {
+        font-size: 1.4em;
+        padding: 10px 15px;
+    }
+
+    .menu {
+        padding: 30px;
+    }
+
+    .menu h2 {
+        font-size: 1.8em;
+    }
+
+    .rules {
+        font-size: 1em;
+    }
+}
