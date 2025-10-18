@@ -66,15 +66,15 @@ body {
     position: absolute;
     font-size: 1.1em;
     font-weight: bold;
-    padding: 12px 20px;
-    /* background: rgba(255, 255, 255, 0.2); */
+    padding: 12px 25px;
     border-radius: 8px;
-    /* backdrop-filter: blur(10px); */
-    cursor: default;
-    user-select: none;
+    letter-spacing: 2px;        /* extra space between letters */
+    margin: 10px;               /* extra space visually between words */
     transition: all 0.3s ease;
     animation: popIn 0.3s ease;
+    z-index: 10;
 }
+
 
 @keyframes popIn {
     0% {
