@@ -76,8 +76,12 @@ function spawnWord() {
     wordEl.className = 'word';
     wordEl.textContent = word;
     
-    // Random position calculation
-    const maxX = window.innerWidth - 200;
+    // Word dimensions
+    const wordWidth = 150;
+    const wordHeight = 50;
+    
+    // Available area
+    const maxX = window.innerWidth - wordWidth;
     const maxY = window.innerHeight - 300;
     const minY = 150;
     
@@ -92,18 +96,29 @@ function spawnWord() {
         overlapping = false;
         
         for (let existingWord of activeWords) {
-            const existingRect = existingWord.element.getBoundingClientRect();
+            const existingLeft = parseFloat(existingWord.element.style.left);
+            const existingTop = parseFloat(existingWord.element.style.top);
+            const existingRect = {
+                left: existingLeft,
+                top: existingTop,
+                right: existingLeft + wordWidth,
+                bottom: existingTop + wordHeight
+            };
+            
             const newRect = {
                 left: x,
                 top: y,
-                right: x + 150,
-                bottom: y + 50
+                right: x + wordWidth,
+                bottom: y + wordHeight
             };
             
-            if (!(newRect.right < existingRect.left || 
-                  newRect.left > existingRect.right || 
-                  newRect.bottom < existingRect.top || 
-                  newRect.top > existingRect.bottom)) {
+            // Add padding for spacing
+            const padding = 30;
+            
+            if (!(newRect.right + padding < existingRect.left || 
+                  newRect.left - padding > existingRect.right || 
+                  newRect.bottom + padding < existingRect.top || 
+                  newRect.top - padding > existingRect.bottom)) {
                 overlapping = true;
                 x = Math.random() * maxX;
                 y = minY + Math.random() * (maxY - minY);
