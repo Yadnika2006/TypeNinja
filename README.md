@@ -45,3 +45,9 @@ When the game ends, you can view a detailed summary of your stats including spee
 ## 👩‍💻 Developed By
 **Parth** & **Yadnika**  
 Created with passion, code, and caffeine.
+
+## 🔗 Live Link
+to be added 
+
+## 📷 Screenshots
+ 
