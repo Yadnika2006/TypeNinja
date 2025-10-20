@@ -9,7 +9,6 @@
 
 body {
     font-family: 'Courier New', monospace;
-    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
     background: black;
     color: white;
     overflow: hidden;
@@ -22,7 +21,6 @@ body {
     height: 100vh;
 }
 
-/* Header Styles */
 .header {
     position: absolute;
     top: 20px;
@@ -52,7 +50,6 @@ body {
     font-weight: bold;
 }
 
-/* Game Area */
 .game-area {
     position: absolute;
     top: 150px;
@@ -68,8 +65,8 @@ body {
     font-weight: bold;
     padding: 12px 25px;
     border-radius: 8px;
-    letter-spacing: 2px;        /* extra space between letters */
-    margin: 10px;               /* extra space visually between words */
+    letter-spacing: 2px;        
+    margin: 10px;              
     transition: all 0.3s ease;
     animation: popIn 0.3s ease;
     z-index: 10;
@@ -114,7 +111,6 @@ body {
     }
 }
 
-/* Input Area */
 .input-area {
     position: absolute;
     bottom: 30px;
@@ -146,7 +142,6 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Menu Styles */
 .menu {
     position: absolute;
     top: 50%;
@@ -225,12 +220,10 @@ body {
     margin: 8px 0;
 }
 
-/* Hidden Class */
 .hidden {
     display: none !important;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .header h1 {
         font-size: 1.8em;

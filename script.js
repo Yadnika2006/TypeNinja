@@ -1,4 +1,3 @@
-// Word bank
 const wordList = [
     'algorithm', 'binary', 'cache', 'database', 'encryption',
     'firewall', 'gateway', 'hardware', 'interface', 'javascript',
@@ -14,7 +13,6 @@ const wordList = [
     'class', 'method', 'server', 'client', 'framework','yappnika'
 ];
 
-// Game variables
 let score = 0;
 let timer = 60;
 let wordsTyped = 0;
@@ -25,7 +23,6 @@ let timerInterval;
 let gameRunning = false;
 let startTime;
 
-// DOM elements
 const gameArea = document.getElementById('gameArea');
 const wordInput = document.getElementById('wordInput');
 const scoreDisplay = document.getElementById('score');
@@ -34,7 +31,6 @@ const wordCountDisplay = document.getElementById('wordCount');
 const startMenu = document.getElementById('startMenu');
 const gameOverMenu = document.getElementById('gameOverMenu');
 
-// Event listeners
 wordInput.addEventListener('input', checkWord);
 wordInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -42,7 +38,6 @@ wordInput.addEventListener('keydown', (e) => {
     }
 });
 
-// Start game function
 function startGame() {
     startMenu.classList.add('hidden');
     wordInput.disabled = false;
@@ -50,7 +45,6 @@ function startGame() {
     gameRunning = true;
     startTime = Date.now();
     
-    // Reset game state
     score = 0;
     timer = 60;
     wordsTyped = 0;
@@ -59,15 +53,12 @@ function startGame() {
     
     updateDisplay();
     
-    // Start game intervals
     spawnInterval = setInterval(spawnWord, 1500);
     timerInterval = setInterval(updateTimer, 1000);
     
-    // Spawn initial words
     spawnWord();
 }
 
-// Spawn a new word at random position
 function spawnWord() {
     if (!gameRunning) return;
     
@@ -76,11 +67,9 @@ function spawnWord() {
     wordEl.className = 'word';
     wordEl.textContent = word;
     
-    // Word dimensions
     const wordWidth = 150;
     const wordHeight = 50;
     
-    // Available area
     const maxX = window.innerWidth - wordWidth;
     const maxY = window.innerHeight - 300;
     const minY = 150;
@@ -88,7 +77,6 @@ function spawnWord() {
     let x = Math.random() * maxX;
     let y = minY + Math.random() * (maxY - minY);
     
-    // Check for overlap with existing words
     let overlapping = true;
     let attempts = 0;
     
@@ -112,7 +100,6 @@ function spawnWord() {
                 bottom: y + wordHeight
             };
             
-            // Add padding for spacing
             const padding = 30;
             
             if (!(newRect.right + padding < existingRect.left || 
@@ -137,7 +124,6 @@ function spawnWord() {
         text: word
     });
 
-    // Check if too many words on screen
     if (activeWords.length > 10) {
         endGame(false);
     }
@@ -145,12 +131,11 @@ function spawnWord() {
     updateDisplay();
 }
 
-// Check typed word against active words
 function checkWord() {
     const input = wordInput.value.toLowerCase().trim();
     
     if (input === '') {
-        // Remove matched class from all words
+        
         activeWords.forEach(word => {
             word.element.classList.remove('matched');
         });
@@ -162,19 +147,18 @@ function checkWord() {
     for (let i = 0; i < activeWords.length; i++) {
         const word = activeWords[i];
         
-        // Check if word starts with input
         if (word.text.toLowerCase().startsWith(input)) {
             word.element.classList.add('matched');
             foundMatch = true;
             
-            // Check for exact match
+           
             if (word.text.toLowerCase() === input) {
-                // Calculate points
+                
                 const points = word.text.length * 10;
                 score += points;
                 wordsTyped++;
                 
-                // Remove word with animation
+                
                 word.element.classList.add('removing');
                 setTimeout(() => {
                     word.element.remove();
@@ -184,7 +168,7 @@ function checkWord() {
                 wordInput.value = '';
                 updateDisplay();
                 
-                // Check win condition
+                
                 if (score >= 2500) {
                     endGame(true);
                 }
@@ -196,7 +180,7 @@ function checkWord() {
     }
 }
 
-// Update timer
+
 function updateTimer() {
     if (!gameRunning) return;
     
@@ -208,29 +192,29 @@ function updateTimer() {
     }
 }
 
-// Update display
+
 function updateDisplay() {
     scoreDisplay.textContent = score;
     timerDisplay.textContent = timer;
     wordCountDisplay.textContent = activeWords.length;
 }
 
-// End game
+
 function endGame(won) {
     gameRunning = false;
     
-    // Clear intervals
+    
     clearInterval(spawnInterval);
     clearInterval(timerInterval);
     
     wordInput.disabled = true;
     
-    // Calculate statistics
+    
     const elapsed = (Date.now() - startTime) / 1000;
     const avgRateSecond = (wordsTyped / elapsed).toFixed(2);
     const avgRateMinute = (wordsTyped / elapsed * 60).toFixed(2);
     
-    // Update game over screen
+    
     document.getElementById('resultTitle').textContent = 
         won ? 'CONGRATULATIONS!' : 'GAME OVER';
     document.getElementById('resultMessage').textContent = 
@@ -243,11 +227,10 @@ function endGame(won) {
     gameOverMenu.classList.remove('hidden');
 }
 
-// Restart game
+
 function restartGame() {
     gameOverMenu.classList.add('hidden');
     
-    // Clear all words
     activeWords.forEach(word => word.element.remove());
     activeWords = [];
     
