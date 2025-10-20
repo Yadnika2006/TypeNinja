@@ -50,4 +50,8 @@ Created with passion, code, and caffeine.
 to be added 
 
 ## 📷 Screenshots
- 
+ ![Homepage/Rules](./Screenshots/1.png)
+
+![Game interface](./Screenshots/2.png)
+
+![Scoreboard](./Screenshots/3.png)
