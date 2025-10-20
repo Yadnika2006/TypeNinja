@@ -199,16 +199,13 @@ function updateDisplay() {
     wordCountDisplay.textContent = activeWords.length;
 }
 
-
 function endGame(won) {
     gameRunning = false;
-    
     
     clearInterval(spawnInterval);
     clearInterval(timerInterval);
     
     wordInput.disabled = true;
-    
     
     const elapsed = (Date.now() - startTime) / 1000;
     const avgRateSecond = (wordsTyped / elapsed).toFixed(2);
@@ -226,7 +223,6 @@ function endGame(won) {
     
     gameOverMenu.classList.remove('hidden');
 }
-
 
 function restartGame() {
     gameOverMenu.classList.add('hidden');
