@@ -47,7 +47,7 @@ When the game ends, you can view a detailed summary of your stats including spee
 Created with passion, code, and caffeine.
 
 ## 🔗 Live Link
-to be added 
+https://yadnika2006.github.io/CTRL_YOUR_TYPE/
 
 ## 📷 Screenshots
  ![Homepage/Rules](./Screenshots/1.png)
