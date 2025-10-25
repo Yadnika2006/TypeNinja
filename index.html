@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You My Type?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Delius&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container"> 
+        <div class="header">
+            <h1>CTRL YOUR TYPE 😉</h1>
+            <div class="stats">
+                <div>SCORE: <span id="score">0</span></div>
+                <div>TIMER: <span id="timer">60</span>s</div>
+                <div>WORDS: <span id="wordCount">0</span>/10</div>
+            </div>
+        </div>
+
+        <div id="startMenu" class="menu">
+            <h2>Welcome to: CTRL YOUR TYPE ;)</h2>
+            <p class="author">BY: PARTH and YADNIKA</p>
+            
+            <div class="rules">
+                <p><strong>&gt; RULES</strong></p>
+                <p class="para">- Type any of the words you see on your screen to get points.</p>
+                <p class="para">- Longer words give more points.</p>
+                <p class="para">- Press ENTER to quickly erase your current input.</p>
+                <br>
+                <p><strong>&gt; YOU WIN IF:</strong></p>
+                <p class="para">- Your score reaches 2500.</p>
+                <br>
+                <p><strong>&gt; YOU LOSE IF:</strong></p>
+                <p class="para">- You have more than 10 words unanswered on your screen.</p>
+                <p class="para">- Timer reaches ZERO.</p>
+            </div>
+            <button onclick="startGame()">START GAME</button>
+        </div>
+
+        <div id="gameOverMenu" class="menu hidden">
+            <div class="game-over">
+                <h2 id="resultTitle">GAME OVER</h2>
+                <p id="resultMessage">Sorry, you're not eligible</p>
+                <br>
+                <p>You typed: <span id="finalWords">0</span> words</p>
+                <p>Average rate (per second): <span id="avgRateSecond">0</span> words/second</p>
+                <p>Average rate (per minute): <span id="avgRateMinute">0</span> words/minute</p>
+                <p>Final Score: <span id="finalScore">0</span></p>
+            </div>
+            <button onclick="restartGame()">PLAY AGAIN</button>
+        </div>
+
+        <div class="game-area" id="gameArea"></div>
+
+        <div class="input-area">
+            <input 
+                type="text" 
+                id="wordInput" 
+                placeholder="Type the words here..." 
+                disabled 
+                autocomplete="off"
+                spellcheck="false">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
